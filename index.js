@@ -53,14 +53,10 @@ if(process.argv.length > 2) { //if there is extra arguments in the node command
 			try { //try
 				commd = commands[get_command_name(file[i])](...get_command_arguments(file[i])); //run command, the ...get_command_arguments(file[i]) puts the contents of the list as seperate arguments for the function
 			} catch(e) {
-				if(!ignoreInternalError) {
-					console.log("** INTERNAL ERROR AT LINE " + (i + 1) + ": " + e);
-				}
-			} //internal error
+					console.log("** INTERNAL ERROR AT LINE " + (i + 1) + ": " + e); //internal error, when something goes wrong in here
+			} 
 		} else {
-			if(!ignoreCommandError) {
-				console.log("** UNKNOWN COMMAND AT LINE " + (i + 1));
-			} //unknown command
+				console.log("** UNKNOWN COMMAND AT LINE " + (i + 1)); //unknown command error
 			continue;
 		}
 	}
